@@ -1,0 +1,16 @@
+<launch>
+  <arg name="camera_name" default="camera360" />
+  <arg name="frame_id" default="$(arg camera_name)_center_link"/>
+  <arg name="calibration_name" default="insta360"/>
+
+  <node pkg="usb_cam" type="usb_cam_node"
+    name="$(arg camera_name)_node" 
+    output="screen">
+
+    <!-- Parameters used to find the camera. please vlc -> capture device to find the correct device name -->
+    <param name="video_device" value="/dev/video0"/> 
+    <param name="image_width" value="3008"/>
+    <param name="image_height" value="1504"/>   
+  </node>   
+
+</launch>
