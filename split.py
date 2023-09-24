@@ -22,10 +22,11 @@ for topic, msg, ts in in_bag.read_messages():
     left_msg=bridge.cv2_to_compressed_imgmsg(left)
     left_msg.header=msg.header
     left_msg.header.frame_id='cam0'
+    out_bag.write('insta360/cam0/compressed', left_msg, ts)
     right_msg=bridge.cv2_to_compressed_imgmsg(right)
     right_msg.header=msg.header
     right_msg.header.frame_id='cam1'
-    out_bag.write('insta360/cam0/compressed', left_msg, ts)
+    
     out_bag.write('insta360/cam1/compressed', right_msg, ts)
 print('{} images converted.'.format(frame_cnt))
 in_bag.close()
